@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Blue Marble</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+.marble_board {
+	background-image: url("/blueMarble/images/board.png");
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: 100%;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+.no_border {
+	border: none !important;
+}
+
+.boaard_floor {
+	background: lightblue;
+}
+
+#oneDice, #twoDice {
+	width: 80px;
+	height: 80px;
+}
+</style>
+<link rel="stylesheet" href="/blueMarble/css/jquery-ui.css">
+<script src="/blueMarble/scripts/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+	<div class="boaard_floor">
+		<div class="container" align="center">
+			<h1>Blue Marble</h1>
+			<div>
+				주사위 : <span id="diceRs"></span> 현재 플레이어 <span id="player"></span> 현재
+				위치 : <span id="now"></span>
+			</div>
+			<div id="trip">
+				<select>
+					<option value="">출발</option>
+					<option value="">타이페이</option>
+					<option value="">황금열쇠</option>
+					<option value="">베이징</option>
+					<option value="">마닐라</option>
+					<option value="">제주</option>
+					<option value="">싱가포르</option>
+					<option value="">황금열쇠</option>
+					<option value="">카이로</option>
+					<option value="">이스탄불</option>
+					<option value="">무인도</option>
+					<option value="">아테네</option>
+					<option value="">황금열쇠</option>
+					<option value="">코펜하겐</option>
+					<option value="">스톡홀름</option>
+					<option value="">콩코드 여객기</option>
+					<option value="">베른</option>
+					<option value="">황금열쇠</option>
+					<option value="">베를린</option>
+					<option value="">오타와</option>
+					<option value="">사회복지기금 접수처</option>
+					<option value="">부에노스아이레스</option>
+					<option value="">황금열쇠</option>
+					<option value="">상파울루</option>
+					<option value="">시드니</option>
+					<option value="">부산</option>
+					<option value="">하와이</option>
+					<option value="">리스본</option>
+					<option value="">퀸 엘리자베스호</option>
+					<option value="">마드리드</option>
+					<option value="">우주여행</option>
+					<option value="">도쿄</option>
+					<option value="">컬럼비아호</option>
+					<option value="">파리</option>
+					<option value="">로마</option>
+					<option value="">황금열쇠</option>
+					<option value="">런던</option>
+					<option value="">뉴욕</option>
+					<option value="">사회복지기금</option>
+					<option value="">서울</option>
+				</select>
+				<button type="button" id="tripBtn">선택</button>
+			</div>
+			<div>
+				<span id="playerImg"></span>
+			</div>
+			<br>
+			<div class="marble_board" align="center">
+				<div
+					style="padding-left: 14px; padding-right: 18px; padding-top: 14px">
+					<table class="table table-bordered">
+						<tr height="158px">
+							<td width="14%" id="c21">사회복지기금 접수처</td>
+							<td width="7.8%" id="c22" class="green">부에노스아이레스</td>
+							<td width="7.8%" id="c23" class="goldenKey">황금열쇠</td>
+							<td width="7.8%" id="c24" class="green">상파울루</td>
+							<td width="7.8%" id="c25" class="green">시드니</td>
+							<td width="7.8%" id="c26" class="black">부산</td>
+							<td width="7.8%" id="c27" class="green">하와이</td>
+							<td width="7.8%" id="c28" class="green">리스본</td>
+							<td width="7.8%" id="c29" class="black">퀸 엘리자베스호</td>
+							<td width="7.8%" id="c30" class="green">마드리드</td>
+							<td width="14%" id="c31">우주여행</td>
+						</tr>
+						<tr height="88px">
+							<td id="c20" class="orange">오타와</td>
+							<td rowspan="9" colspan="9">
+								<div id="notStart">
+									<button id="diceBtn">주사위 굴리기</button>
+								</div>
+								<div id="dice">
+									<span id="dice1"></span>
+									<span id="dice2"></span>
+								</div>
+								<div id="start">
+									<select id="playerCheck">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+									<button id="startBtn">start</button>
+								</div>
+							</td>
+							<td id="c32" class="blue">도쿄</td>
+						</tr>
+						<tr height="88px">
+							<td id="c19" class="orange">베를린</td>
+							<td id="c33" class="black">컬럼비아호</td>
+						</tr>
+						<tr height="88px">
+							<td id="c18" class="goldenKey">황금열쇠</td>
+							<td id="c34" class="blue">파리</td>
+						</tr>
+						<tr height="88px">
+							<td id="c17" class="orange">베른</td>
+							<td id="c35" class="blue">로마</td>
+						</tr>
+						<tr height="88px">
+							<td id="c16" class="black">콩코드 여객기</td>
+							<td id="c36" class="goldenKey">황금열쇠</td>
+						</tr>
+						<tr height="88px">
+							<td id="c15" class="orange">스톡홀름</td>
+							<td id="c37" class="blue">런던</td>
+						</tr>
+						<tr height="88px">
+							<td id="c14" class="orange">코펜하겐</td>
+							<td id="c38" class="blue">뉴욕</td>
+						</tr>
+						<tr height="88px">
+							<td id="c13" class="goldenKey">황금열쇠</td>
+							<td id="c39">사회복지기금</td>
+						</tr>
+						<tr height="88px">
+							<td id="c12" class="orange">아테네</td>
+							<td id="c40" class="black">서울</td>
+						</tr>
+						<tr height="158px">
+							<td width="14%" id="c11">무인도</td>
+							<td width="7.8%" id="c10" class="pink">이스탄불</td>
+							<td width="7.8%" id="c9" class="pink">카이로</td>
+							<td width="7.8%" id="c8" class="goldenKey">황금열쇠</td>
+							<td width="7.5%" id="c7" class="pink">싱가포르</td>
+							<td width="7.5%" id="c6" class="black">제주</td>
+							<td width="7.5%" id="c5" class="pink">마닐라</td>
+							<td width="7.8%" id="c4" class="pink">베이징</td>
+							<td width="7.8%" id="c3" class="goldenKey">황금열쇠</td>
+							<td width="7.7%" id="c2" class="pink">타이페이</td>
+							<td width="14%" id="c1">출발
+								<div id="startPlayer">
+									<img src="/blueMarble/images/1.png" id="player1"> 
+									<img src="/blueMarble/images/2.png" id="player2"> 
+									<img src="/blueMarble/images/3.png" id="player3">
+									<img src="/blueMarble/images/4.png" id="player4">
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/blueMarble/scripts/blueMarble.js">
+</script>
+</html>
